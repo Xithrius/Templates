@@ -8,9 +8,9 @@ import os
 pyautogui.FAILSAFE = True
 
 
-def _main():
-	#generateFiles()
-	generateFileProperties()
+def main():
+	generateFiles()
+	# generateFileProperties()
 
 
 
@@ -55,8 +55,8 @@ def pathing(option):
         return dir_path
     elif option == 'SaveGames':
         dir_path = os.path.dirname(os.path.realpath(__file__))
-        cookiePath = dir_path + '\\SaveGames'
-        return cookiePath
+        savePath = dir_path + '/SaveGames'
+        return savePath
 
 
-_main()
+main()
