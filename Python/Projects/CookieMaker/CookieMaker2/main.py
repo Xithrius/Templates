@@ -11,18 +11,18 @@ pyautogui.FAILSAFE = True
 def _main():
 	generateFiles()
 	generateFileProperties()
-	# Broken
+
 
 
 
 def generateFiles():
 	try:
-		os.mkdir(pathing('dirPath') + '\\SaveGames')
+		os.mkdir(pathing('SaveGames'))
 		return False
 	except FileExistsError:
 		pass
 	try:
-		with open(pathing('dirPath') + '/SaveGames', 'w+') as f:
+		with open(pathing('SaveGames'), 'w+') as f:
 			x = {"Pass": 0, "Cookies": 0, "Buildings": 0}
 			json.dump(x, f)
 	except FileExistsError:
@@ -31,6 +31,7 @@ def generateFiles():
 			pass
 		else:
 			print('done')
+
 
 def generateFileProperties():
 	loader.writeLine('cookieMaker2.py properties:', 'endWOinput', 0.1)
