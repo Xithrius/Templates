@@ -11,7 +11,7 @@ pyautogui.FAILSAFE = True
 def _main():
 	generateFiles()
 	generateFileProperties()
-
+	# Broken
 
 
 
@@ -22,7 +22,7 @@ def generateFiles():
 	except FileExistsError:
 		pass
 	try:
-		with open(pathing('dirPath') + '/SaveGames', 'w') as f:
+		with open(pathing('dirPath') + '/SaveGames', 'w+') as f:
 			x = {"Pass": 0, "Cookies": 0, "Buildings": 0}
 			json.dump(x, f)
 	except FileExistsError:
