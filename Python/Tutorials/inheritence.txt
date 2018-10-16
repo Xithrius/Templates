@@ -1,0 +1,48 @@
+
+Amy has a cat named scale and a dog named sundial
+
+Peter has a cat named iamcat
+
+Amy is Peters mom
+    therefore
+Peter is a Subclass
+
+which means peter has anything amy has, if he didnt already have it
+
+what is amys cat called? scale
+what is amys dog called? sundial
+what is Peters cat called? iamcat
+what is Peters dog called? sundial
+
+in python terms
+
+
+class Amy:
+    cat = 'scale'
+    dog = 'sundial'
+
+
+class Peter(Amy):
+    cat = 'iamcat'
+
+
+class James(Amy):
+    fish = 'feesh'
+
+
+Peter.cat == 'iamcat'
+Amy.dog == 'sundial'
+Amy.cat == 'scale'
+Peter.dog == 'sundial'
+James.cat == 'scale'
+James.dog == 'sundial'
+
+Amy.fish == ''
+Peter.fish == ''
+James.fish == 'feesh'
+
+super = daddy
+
+Peters daddy is Amy because Peters daddy is Amy
+
+so Peters super.cat = scale(not python syntax)

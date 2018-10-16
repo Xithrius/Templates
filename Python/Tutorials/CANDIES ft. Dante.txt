@@ -1,0 +1,33 @@
+candies = number of candies
+to be given = number of candies we are going to give away next time
+people = amount of people we have given candies to
+
+candies = c
+to be given = g
+people = p
+
+candies >/= to be given
+if true, candies = candies - to be given
+to be given = to be given + 1
+people = people + 1 
+repeat
+
+iteration 0 
+candies = 4
+to be given = 1
+people = 0
+
+iteration 1
+candies = 3
+to be given = 2
+people = 1
+
+iteration 2
+candies = 1
+to be given = 3
+people = 2
+
+iteration 3
+doesn't exit
+candies >/= to be given 
+:(
