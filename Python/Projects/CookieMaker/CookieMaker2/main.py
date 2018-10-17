@@ -4,34 +4,43 @@ import pyautogui
 import time
 import json
 import os
+import distutils.dir_util
 
 pyautogui.FAILSAFE = True
-
+#x = pyautogui.confirm('A save file exists. Delete and reset?')
 
 def main():
-	generateFiles()
-	generateFileProperties()
-
-
-
+	In = loader.writeLine('Enter your name:')
+	In1 = loader.writeLine(f'Greetings {In}. Create new save? [Y/N]:')
+	if In1 == 'n':
+		password = loader.writeLine('Enter password:')
+	if In1 == 'y':
+		loader.writeLine('Creating new save...', 'EndWOinput')
+		generateFiles()
+		generateFileProperties()
+		saveDecision()
 
 
 def generateFiles():
 	try:
-		os.mkdir(pathing('SaveGames'))
+		distutils.dir_util.mkpath(pathing('SaveGames'))
 		return False
 	except FileExistsError:
 		pass
-	try:
-		with open(pathing('SaveGames'), 'w+') as f:
-			x = {"Pass": 0, "Cookies": 0, "Buildings": 0}
-			json.dump(x, f)
-	except FileExistsError:
-		x = pyautogui.confirm('A save file exists. Delete and reset?')
-		if x == 'OK':
-			pass
-		else:
-			print('done')
+
+
+def saveDecision():
+	saveFile = False
+	i = 0
+	while False:
+		try:
+			with open(pathing('SaveGames') + f'/save{i}.json', 'w+') as f:
+				x = {"Name": 0, "Pass": 0, "Cookies": 0, "Buildings": 0}
+				json.dump(x, f)
+				SaveFile = True
+		except FileExistsError:
+			i += 1
+
 
 
 def generateFileProperties():
@@ -59,4 +68,5 @@ def pathing(option):
         return savePath
 
 
-main()
+if __name__ == '__main__':
+    main()
