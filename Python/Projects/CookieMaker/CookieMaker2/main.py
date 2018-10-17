@@ -10,7 +10,7 @@ pyautogui.FAILSAFE = True
 
 def main():
 	generateFiles()
-	# generateFileProperties()
+	generateFileProperties()
 
 
 
