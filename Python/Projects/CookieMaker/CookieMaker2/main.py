@@ -1,33 +1,41 @@
 import loader
 
-import pyautogui
 import time
 import json
 import os
 import distutils.dir_util
 
-pyautogui.FAILSAFE = True
-#x = pyautogui.confirm('A save file exists. Delete and reset?')
-
 
 def main():
 	In = loader.writeLine('Enter your name:')
-	In1 = loader.writeLine(f'Greetings {In}. Create new save? [Y/N]:', 'endWinputLibrary')
-	if In1 == 'n':
+	In0 = loader.writeLine(f'Greetings {In}. Create new save? [Y/N]:', 'endWinputLibrary')
+	if In0 == 'n':
 		check = True
 		while check:
 			password = loader.writeLine('Enter password:')
 			check1 = True
 			i = 0
 			while check1:
-				with open(pathing('SaveGames') + f'\\Save{i}', 'r') as f:
-					pass # checking if save has correct password
+				with open(pathing('SaveGames') + f'\\Save{i}.json', 'r') as f:
+					objects = json.read(f)
+					loader.writeLine(f'This save has {objects["Cookies"]} cookie(s), and {objects["Buildings"]} building(s)', 'endWOinput')
+					In1 = loader.writeLine('Is this correct? [Y/N]:')
+					if In1 == 'y':
+						objects.cookies = objects['Cookies']
+						objects.buildings = objects['Buildings']
+						Objects()
+					elif In1 == 'n':
+						pass
 
-	if In1 == 'y':
+	if In0 == 'y':
 		loader.writeLine('Creating new save...', 'EndWOinput')
 		generateFiles()
 		generateFileProperties()
 		saveDecision()
+
+
+
+
 
 
 def generateFiles():
@@ -76,6 +84,4 @@ def pathing(option):
         savePath = dir_path + '\\SaveGames'
         return savePath
 
-
-if __name__ == '__main__':
-    main()
+main()
