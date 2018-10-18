@@ -2,21 +2,28 @@ import time
 
 
 def writeLine(string, option='endWinput', t=0.01):
-    if option == 'endWinput':
-        for i in string:
-            print(i, end='', flush=True)
-            time.sleep(t)
-        In = input(' ')
-        checkOut = inputLibrary(string, In)
-        if checkOut != False:
-            return checkOut
-        else:
-            writeLine(string)
-    elif option == 'endWOinput':
-        for i in string:
-            print(i, end='', flush=True)
-            time.sleep(t)
-        print(end='\n')
+	if option == 'endWinput':
+		for i in string:
+			print(i, end='', flush=True)
+			time.sleep(t)
+		In = input(' ')
+		return In
+
+	elif option == 'endWinputLibrary':
+		for i in string:
+			print(i, end='', flush=True)
+			time.sleep(t)
+		In = input(' ')
+		checkOut = inputLibrary(string, In)
+		if checkOut != False:
+			return checkOut
+		else:
+			writeLine(string)
+	elif option == 'endWOinput':
+		for i in string:
+			print(i, end='', flush=True)
+			time.sleep(t)
+		print(end='\n')
 
 
 # Used for writeline

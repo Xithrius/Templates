@@ -11,9 +11,17 @@ pyautogui.FAILSAFE = True
 
 def main():
 	In = loader.writeLine('Enter your name:')
-	In1 = loader.writeLine(f'Greetings {In}. Create new save? [Y/N]:')
+	In1 = loader.writeLine(f'Greetings {In}. Create new save? [Y/N]:', 'endWinputLibrary')
 	if In1 == 'n':
-		password = loader.writeLine('Enter password:')
+		check = True
+		while check:
+			password = loader.writeLine('Enter password:')
+			check1 = True
+			i = 0
+			while check1:
+				with open(pathing('SaveGames') + f'Save{i}', 'r') as f:
+					pass # checking if save has correct password
+
 	if In1 == 'y':
 		loader.writeLine('Creating new save...', 'EndWOinput')
 		generateFiles()
