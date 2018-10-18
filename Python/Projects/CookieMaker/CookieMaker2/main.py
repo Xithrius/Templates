@@ -8,6 +8,7 @@ import distutils.dir_util
 
 pyautogui.FAILSAFE = True
 #x = pyautogui.confirm('A save file exists. Delete and reset?')
+# test
 
 def main():
 	In = loader.writeLine('Enter your name:')
