@@ -34,10 +34,6 @@ def main():
 		saveDecision()
 
 
-
-
-
-
 def generateFiles():
 	try:
 		distutils.dir_util.mkpath(pathing('SaveGames'))
