@@ -20,7 +20,7 @@ def main():
 			check1 = True
 			i = 0
 			while check1:
-				with open(pathing('SaveGames') + f'Save{i}', 'r') as f:
+				with open(pathing('SaveGames') + f'\\Save{i}', 'r') as f:
 					pass # checking if save has correct password
 
 	if In1 == 'y':
@@ -73,7 +73,7 @@ def pathing(option):
         return dir_path
     elif option == 'SaveGames':
         dir_path = os.path.dirname(os.path.realpath(__file__))
-        savePath = dir_path + '/SaveGames'
+        savePath = dir_path + '\\SaveGames'
         return savePath
 
 
