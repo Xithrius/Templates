@@ -17,21 +17,33 @@ def main():
 			i = 0
 			while check1:
 				with open(pathing('SaveGames') + f'\\Save{i}.json', 'r') as f:
-					objects = json.read(f)
-					loader.writeLine(f'This save has {objects["Cookies"]} cookie(s), and {objects["Buildings"]} building(s)', 'endWOinput')
-					In1 = loader.writeLine('Is this correct? [Y/N]:')
-					if In1 == 'y':
-						objects.cookies = objects['Cookies']
-						objects.buildings = objects['Buildings']
-						Objects()
-					elif In1 == 'n':
-						pass
+					objects = json.load(f)
+					if objects['Pass'] == password:
+						loader.writeLine(f'This save has {objects["Cookies"]} cookie(s), and {objects["Buildings"]} building(s)', 'endWOinput')
+						In1 = loader.writeLine('Is this correct? [Y/N]:')
+						if In1 == 'y':
+							objects.cookies = objects["Cookies"]
+							objects.buildings = objects["Buildings"]
+							Objects()
+						elif In1 == 'n':
+							pass
+					else:
+
+
+
 
 	if In0 == 'y':
 		loader.writeLine('Creating new save...', 'EndWOinput')
 		generateFiles()
 		generateFileProperties()
 		saveDecision()
+
+
+class objects:
+	cookies = 0
+	buildings = 0
+	if cookies != 0:
+		print(cookies)
 
 
 def generateFiles():
