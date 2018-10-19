@@ -7,36 +7,37 @@ import distutils.dir_util
 
 
 def main():
-	In = loader.writeLine('Enter your name:')
-	In0 = loader.writeLine(f'Greetings {In}. Create new save? [Y/N]:', 'endWinputLibrary')
+	generateFiles('genAll')
+	In0 = loader.writeLine(f'Create new save? [Y/N]:', 'endWinputLibrary')
 	if In0 == 'n':
 		check = True
 		while check:
+			name = loader.writeLine('Name:')
 			password = loader.writeLine('Enter password:')
 			check1 = True
 			i = 0
 			while check1:
 				with open(pathing('SaveGames') + f'\\Save{i}.json', 'r') as f:
 					objects = json.load(f)
-					if objects['Pass'] == password:
-						loader.writeLine(f'This save has {objects["Cookies"]} cookie(s), and {objects["Buildings"]} building(s)', 'endWOinput')
-						In1 = loader.writeLine('Is this correct? [Y/N]:')
-						if In1 == 'y':
-							objects.cookies = objects["Cookies"]
-							objects.buildings = objects["Buildings"]
-							Objects()
-						elif In1 == 'n':
-							pass
+					if objects['Name'] == name:
+						if objects['Pass'] == password:
+							loader.writeLine(f'This save has {objects["Cookies"]} cookie(s), and {objects["Buildings"]} building(s)', 'endWOinput')
+							In1 = loader.writeLine('Is this correct? [Y/N]:')
+							if In1 == 'y':
+								pass
+							elif In1 == 'n':
+								pass
+						else:
+							check1 = False
 					else:
-
-
+						check1 = False
 
 
 	if In0 == 'y':
 		loader.writeLine('Creating new save...', 'EndWOinput')
-		generateFiles()
+		generateFiles('genNewSave')
 		generateFileProperties()
-		saveDecision()
+		#saveDecision()
 
 
 class objects:
@@ -46,14 +47,28 @@ class objects:
 		print(cookies)
 
 
-def generateFiles():
-	try:
-		distutils.dir_util.mkpath(pathing('SaveGames'))
-		return False
-	except FileExistsError:
-		pass
+def generateFiles(type):
+	if type == 'genAll':
+		try:
+			distutils.dir_util.mkpath(pathing('SaveGames'))
+		except FileExistsError:
+			pass
+	elif type == 'genNewSave':
+		i = 0
+		check = True
+		while check:
+			try:
+				with open(pathing('SaveGames') + f'\\save{i}.json') as f:
+					In0 = loader.writeLine('Enter Name:')
+					In = loader.writeLine('Enter password for new save:')
+					x = {"Name": In0, "Pass": In, "Cookies": 0, "Buildings": 0}
+					check = False
+					json.dump(x, f) # ERROR
+			except FileExistsError:
+				i += 1
 
 
+'''
 def saveDecision():
 	saveFile = False
 	i = 0
@@ -65,7 +80,7 @@ def saveDecision():
 				SaveFile = True
 		except FileExistsError:
 			i += 1
-
+'''
 
 
 def generateFileProperties():
