@@ -54,33 +54,18 @@ def generateFiles(type):
 		except FileExistsError:
 			pass
 	elif type == 'genNewSave':
+		In = loader.writeLine('Enter Name:')
+		In0 = loader.writeLine('Enter password for new save:')
 		i = 0
 		check = True
 		while check:
-			try:
-				with open(pathing('SaveGames') + f'\\save{i}.json') as f:
-					In0 = loader.writeLine('Enter Name:')
-					In = loader.writeLine('Enter password for new save:')
-					x = {"Name": In0, "Pass": In, "Cookies": 0, "Buildings": 0}
-					check = False
-					json.dump(x, f) # ERROR
-			except FileExistsError:
+			if os.path.exists(pathing('SaveGames') + f'\\save{i}.json') is False:
+				with open(pathing('SaveGames') + f'\\save{i}.json', 'w') as f:
+					x = {"Name": In, "Pass": In0, "Cookies": 0, "Buildings": 0}
+					json.dump(x, f)
+				check = False
+			else:
 				i += 1
-
-
-'''
-def saveDecision():
-	saveFile = False
-	i = 0
-	while False:
-		try:
-			with open(pathing('SaveGames') + f'/save{i}.json', 'w+') as f:
-				x = {"Name": 0, "Pass": 0, "Cookies": 0, "Buildings": 0}
-				json.dump(x, f)
-				SaveFile = True
-		except FileExistsError:
-			i += 1
-'''
 
 
 def generateFileProperties():
