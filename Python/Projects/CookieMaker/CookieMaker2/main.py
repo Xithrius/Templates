@@ -24,7 +24,8 @@ def main():
 							loader.writeLine(f'This save has {objects["Cookies"]} cookie(s), and {objects["Buildings"]} building(s)', 'endWOinput')
 							In1 = loader.writeLine('Is this correct? [Y/N]:')
 							if In1 == 'y':
-								pass
+								Objects.cookies = objects["Cookies"]
+								Objects.buildings = objects["Buildings"]
 							elif In1 == 'n':
 								pass
 						else:
@@ -37,10 +38,9 @@ def main():
 		loader.writeLine('Creating new save...', 'EndWOinput')
 		generateFiles('genNewSave')
 		generateFileProperties()
-		#saveDecision()
 
 
-class objects:
+class Objects:
 	cookies = 0
 	buildings = 0
 	if cookies != 0:
