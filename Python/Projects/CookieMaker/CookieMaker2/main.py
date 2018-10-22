@@ -6,6 +6,13 @@ import os
 import distutils.dir_util
 
 
+class Objects:
+	objects = main()
+	cookies = objects['Cookies']
+	buildings = objects['Buildings']
+	name = objects['Name']
+
+
 def main():
 	generateFiles('genAll')
 	In0 = loader.writeLine(f'Create new save? [Y/N]:', 'endWinputLibrary')
@@ -24,10 +31,9 @@ def main():
 							loader.writeLine(f'This save has {objects["Cookies"]} cookie(s), and {objects["Buildings"]} building(s)', 'endWOinput')
 							In1 = loader.writeLine('Is this correct? [Y/N]:')
 							if In1 == 'y':
-								Objects.cookies = objects["Cookies"]
-								Objects.buildings = objects["Buildings"]
+								return objects
 							elif In1 == 'n':
-								pass
+								check1 = False
 						else:
 							check1 = False
 					else:
@@ -38,13 +44,6 @@ def main():
 		loader.writeLine('Creating new save...', 'EndWOinput')
 		generateFiles('genNewSave')
 		generateFileProperties()
-
-
-class Objects:
-	cookies = 0
-	buildings = 0
-	if cookies != 0:
-		print(cookies)
 
 
 def generateFiles(type):
@@ -92,4 +91,4 @@ def pathing(option):
         savePath = dir_path + '\\SaveGames'
         return savePath
 
-main()
+Objects()
