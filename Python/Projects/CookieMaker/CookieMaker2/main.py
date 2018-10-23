@@ -6,8 +6,6 @@ import os
 import distutils.dir_util
 
 
-
-
 def main():
 	generateFiles('genAll')
 	In0 = loader.writeLine(f'Create new save? [Y/N]:', 'endWinputLibrary')
@@ -37,7 +35,8 @@ def main():
 
 	if In0 == 'y':
 		loader.writeLine('Creating new save...', 'EndWOinput')
-		generateFiles('genNewSave')
+		x = generateFiles('genNewSave')
+		return x
 		generateFileProperties()
 
 
@@ -55,11 +54,12 @@ def generateFiles(type):
 		while check:
 			if os.path.exists(pathing('SaveGames') + f'\\save{i}.json') is False:
 				with open(pathing('SaveGames') + f'\\save{i}.json', 'w') as f:
-					x = {"Name": In, "Pass": In0, "Cookies": 0, "Buildings": 0}
+					x = {"Name": In, "Pass": In0, "Cookies": 1, "Buildings": 1}
 					json.dump(x, f)
 				check = False
 			else:
 				i += 1
+		return x
 
 
 def generateFileProperties():
@@ -92,6 +92,6 @@ class Objects:
 	cookies = objects['Cookies']
 	buildings = objects['Buildings']
 	name = objects['Name']
-	
+
 
 Objects()
