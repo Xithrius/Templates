@@ -6,11 +6,6 @@ import os
 import distutils.dir_util
 
 
-class Objects:
-	objects = main()
-	cookies = objects['Cookies']
-	buildings = objects['Buildings']
-	name = objects['Name']
 
 
 def main():
@@ -90,5 +85,13 @@ def pathing(option):
         dir_path = os.path.dirname(os.path.realpath(__file__))
         savePath = dir_path + '\\SaveGames'
         return savePath
+
+
+class Objects:
+	objects = main()
+	cookies = objects['Cookies']
+	buildings = objects['Buildings']
+	name = objects['Name']
+	
 
 Objects()
