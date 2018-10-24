@@ -32,11 +32,16 @@ int main()
 	cout << "Input your average:" << endl;
 	cin >> average;
 
-	if (average == 60)
-		cout << "You Pass" << endl;
-
-	else
-		cout << "You Fail" << endl;
+    if (average > 100 || < 0)
+        cout << "Invalid data" << endl;
+    else if (average > 90 && average <= 100)
+        cout << "Category A" << endl;
+    else if (80 < average < 89)
+        cout << "Category B" << endl;
+    else if (60 < average < 79)
+        cout << "You pass" << endl;
+    else
+        cout << "You fail" << endl;
 
 
 	return 0;

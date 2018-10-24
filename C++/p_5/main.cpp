@@ -3,7 +3,7 @@
  Relational Operators and the if Statement
  Compile and Run the following program. Then
  do the following exercises.
- ￼
+
  Exercise 1: Run the program several times using a different input each time.
  Does the program do what you expect? Is so, explain what it is doing.
  If not, locate the error and fix it.
@@ -20,20 +20,25 @@ using namespace std;
 
 int main()
 {
-    int num1,	// num1 is not initialized
-    num2 = 5;	// num2 has been initialized to 5
+    int num1, num2,	// num1 is not initialized
+    num3 = 5;	// num2 has been initialized to 5
 
-    cout << "Please enter an integer"  << endl;
+    cout << "Please enter an integer: ";
     cin >> num1;
+    cout << "Please enter another integer: ";
+    cin >> num2;
 
-    cout << "num1 = " << num1 << " and num2 = " << num2 << endl;
+    cout << "num1 = " << num1 << " and num2 = " << num3 << endl;
 
-    if (num1 = num2)
-        cout << "Hey, that is a coincidence!" << endl;
-        cout << "The values are the same" << endl;
+    if (num1 == num3)
+        cout << "num1 == num3" << endl;
+    if (num2 == num3)
+        cout << "num2 == num3" << endl;
 
+    if (num1 && num2 == num3)
+        cout << "num1 and num2 both are equal to num3!" << endl;
 
-    if (num1 != num2)
+    if (num1 && num2 != num3)
         cout << "The values are not the same" << endl;
 
 
