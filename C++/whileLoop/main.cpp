@@ -5,7 +5,7 @@ using namespace std;
 int main()
 {
     bool check = true;
-    while (check != false) {
+    while (check) {
         cout << "Enter a number: ";
         int num;
         cin >> num;
@@ -15,9 +15,10 @@ int main()
 
         }
 
-        else
+        else {
             cout << "Wrong number" << endl;
             check = true;
+        }
     }
     return 0;
 }

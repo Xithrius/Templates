@@ -26,7 +26,7 @@ int main()
     cout << "$69.99/month, unlimited minutes provided." << endl;
     const float cRate = 69.99;
 
-/*
+
     cout << "Select a subscription package: ";
     char packageChoice;
     cin >> packageChoice;
@@ -38,10 +38,13 @@ int main()
 
     case 'C':
 
+    case 'quit':
+        //
+
     default:
         //
 
     }
-*/
+
     return 0;
 }
