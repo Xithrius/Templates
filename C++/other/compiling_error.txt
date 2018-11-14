@@ -1,7 +1,0 @@
-/home/xithrius/snap/gitkraken/1/CODING/C++/practice.cpp:6:1: error: expected initializer before ‘int’
- int main()
- ^~~
-/home/xithrius/snap/gitkraken/1/CODING/C++/practice.cpp: In function ‘int sum(int, int, int)’:
-/home/xithrius/snap/gitkraken/1/CODING/C++/practice.cpp:14:3: error: ‘d’ was not declared in this scope
-   d = a + b + c;
-   ^
