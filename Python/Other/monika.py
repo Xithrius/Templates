@@ -3,6 +3,7 @@
 from random import randint
 from time import sleep
 
+
 def main():
     while True:
         x = randint(0, 1)
