@@ -1,6 +1,14 @@
+/*
+Charles Buell
+11/14/2018
+My program takes 4 judge scores, then takes
+the middle two scores and averages them.
+
+*/
+
 #include <iostream>
 #include <iomanip>
-#include <algorithm>
+
 using namespace std;
 
 
@@ -16,7 +24,7 @@ void getJudgeData (int &a) {
 void calcScore(int array[4]) {
 
     // searching for the highest of the two middle scores
-    int middleHighest, middleLowest, i;
+    int middleHighest, middleLowest, i, tmp;
     double average;
     bool swapped = true;
 
@@ -24,9 +32,12 @@ void calcScore(int array[4]) {
     while (swapped) {
         swapped = false;
         for (i = 0; i < 3; ++i) {
-            // if
+            // if the component behind another one is smaller,
+            // the two switch places.
             if (array[i + 1] < array[i]) {
-                swap(array[i], array[i + 1]);
+                tmp = array[i];
+                array[i] = array[i + 1];
+                array[i + 1] = tmp;
                 swapped = true;
             }
         }
@@ -55,3 +66,18 @@ int main() {
 
     return 0;
 }
+/*
+Enter the judge's score: 6
+Enter the judge's score: 70
+70 is an invalid score. Must be between 0 and 20
+It must be a number between 0 to 20
+Enter the judge's score:
+19
+Enter the judge's score: 10
+Enter the judge's score: 8
+The performer's final score is 9.0
+Process returned 0 (0x0)   execution time : 11.604 s
+Press any key to continue.
+
+
+
