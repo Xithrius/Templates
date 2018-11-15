@@ -6,7 +6,7 @@
  60 for the  average.
  What  happens when you  input  60 as the  average?
  > Modify  the  first if statement so that the  program will
- also  print  “You Pass” if the  average equals 60.
+ also  print  ï¿½You Passï¿½ if the  average equals 60.
 
 
  Exercise 2:   Modify  the  program so that it uses
@@ -15,10 +15,10 @@
  Exercise 3:   Modify  the  program from Exercise 2 to
  allow the  following categories:
  Invalid data  (data above 100),
- ‘A’ category (90–100),
- ‘B’ category (80–89),
- “You Pass” category (60–79),
-  “You Fail” category (0–59).
+ ï¿½Aï¿½ category (90ï¿½100),
+ ï¿½Bï¿½ category (80ï¿½89),
+ ï¿½You Passï¿½ category (60ï¿½79),
+  ï¿½You Failï¿½ category (0ï¿½59).
  What  will  happen to your  program if you  enter
  a negative value such  as -12?*/
 
