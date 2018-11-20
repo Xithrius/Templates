@@ -5,6 +5,9 @@ import json
 import os
 import distutils.dir_util
 
+import subprocess
+p = subprocess.Popen(['TransferProd.cmd'])
+
 
 def main():
 	generateFiles('genAll')
@@ -12,6 +15,7 @@ def main():
 	if In0 == 'n':
 		check = True
 		while check:
+			loader.writeLine
 			name = loader.writeLine('Name:')
 			password = loader.writeLine('Enter password:')
 			check1 = True
@@ -22,11 +26,6 @@ def main():
 					if objects['Name'] == name:
 						if objects['Pass'] == password:
 							loader.writeLine(f'This save has {objects["Cookies"]} cookie(s), and {objects["Buildings"]} building(s)', 'endWOinput')
-							In1 = loader.writeLine('Is this correct? [Y/N]:')
-							if In1 == 'y':
-								return objects
-							elif In1 == 'n':
-								check1 = False
 						else:
 							check1 = False
 					else:
