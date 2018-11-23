@@ -5,8 +5,8 @@ import json
 import os
 import distutils.dir_util
 
-import subprocess
-p = subprocess.Popen(['TransferProd.cmd'])
+#import subprocess
+#p = subprocess.Popen(['TransferProd.cmd'])
 
 
 def main():
