@@ -6,7 +6,7 @@ import os
 import distutils.dir_util
 
 #import subprocess
-#p = subprocess.Popen(['TransferProd.cmd'])
+#p = subprocess.Popen(['TransferProd.cmd']) test
 
 
 def main():
