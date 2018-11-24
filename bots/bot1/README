@@ -1,0 +1,6 @@
++------------------------------------------------------+
+| How to run bot:                                      |
+| within console, cd to folder with index.js file      |
+| type node .                                          |
+| to make changes or stop the bot, ctrl + c in console |
++------------------------------------------------------+
