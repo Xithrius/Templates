@@ -1,0 +1,3 @@
+If you happen to commit something private and you want it removed, simply do this command.
+
+git rm --cached (path/file here)
