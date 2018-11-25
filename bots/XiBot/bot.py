@@ -1,6 +1,6 @@
 import discord
-
 import discord.ext.commands as comms
+
 
 class MainCog:
     def __init__(self, bot):
@@ -24,17 +24,9 @@ class MainCog:
     @comms.command()
     async def hippity(self, ctx):
         if await ctx.bot.is_owner(ctx.message.author):
-            await ctx.send('hippity hoppity u own my property')
+            await ctx.reply('Hippity hoppity u own my property')
         else:
-            await ctx.send('hippity')
-            await asyncio.sleep(1)
-            await ctx.send('hoppity')
-            await asyncio.sleep(1)
-            await ctx.send('get off')
-            await asyncio.sleep(1)
-            await ctx.send('this')
-            await asyncio.sleep(1)
-            await ctx.send('PROPERTY!!!')
+            await ctx.reply('Hippity hoppity get off this property')
 
 
 class BotClient(comms.Bot):
