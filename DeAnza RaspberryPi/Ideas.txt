@@ -1,3 +1,0 @@
-- Turn it into a music player
-- Connect it to house devices
-- 
