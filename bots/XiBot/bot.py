@@ -20,37 +20,44 @@ class MainCog:
             await ctx.send(f"{ctx.message.author.mention} I'm not your property")
 
     @comms.command()
-    async def change_presence(self, ctx):
+    async def updateStatus(self, ctx):
         if await ctx.bot.is_owner(ctx.message.author):
-            x = list(str(f"{ctx.message.content}"))
-            x[0:10] = ''
-            str1 = ''.join(str(i) for i in x)
-            await ctx.bot.change_presence(status=discord.Status.online, activity=discord.Game(str1))
+            check = True
+            while check:
+                x = list(str(f"{ctx.message.content}"))
+                x[0:14] = ''
+                for i in range(len(x)):
+                    if x[i] == ',':
+                        if x[i + 1] == ' ':
+                            status = x[0:i]
+                            desc = x[i + 2:]
+                status = ''.join(str(y) for y in status)
+                desc = ''.join(str(y) for y in desc)
+                if status == 'online':
+                    statusChange = discord.Status.online
+                elif status == 'offline':
+                    statusChange = discord.Status.offline
+                elif status == 'idle':
+                    statusChange = discord.Status.idle
+                elif status == 'dnd':
+                    statusChange = discord.Status.dnd
+                elif status == 'invisible':
+                    statusChange = discord.Status.invisible
+                else:
+                    ctx.send(f"{ctx.message.author.mention}! {status} isn't an acceptable option. For help, type $updateStatus help")
+                    ctx.send("Options for status are `online`, `offline`, `idle`, `dnd (do not disturb)`, and `invisible`")
+                    check = True
+                await ctx.bot.change_presence(status=statusChange, activity=discord.Game(desc))
         else:
             await ctx.send(f"You don't have permission, {ctx.message.author.mention}")
 
     @comms.command()
-    async def updateStatus(self, ctx):
-        if await ctx.bot.is_owner(ctx.message.author):
-            x = list(str(f"{ctx.message.content}"))
-            x[0:13] = ''
-            # $updateStatus offline, none
-            if x[0:7] == list('offline'):
-                ctx.bot.change_presence(status=discord.Status.offline, activity=None)
-
-
-    @comms.command()
     async def exit(self, ctx):
         if await ctx.bot.is_owner(ctx.message.author):
-            await ctx.send('bi')
+            await ctx.send('Cya nerds')
             await self.bot.logout()
         else:
-            await ctx.send("NOOOOOOOOOOOOOOOOO")
-
-    @comms.command()
-    async def allHail(self, ctx):
-        await ctx.send(f"All hail {ctx.message.member.role}")
-
+            await ctx.send("You can't do that")
 
 class BotClient(comms.Bot):
     async def on_ready(self):
