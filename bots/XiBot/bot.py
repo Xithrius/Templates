@@ -1,6 +1,8 @@
 import discord
 import discord.ext.commands as comms
 
+import stripCommand
+
 class MainCog:
     def __init__(self, bot):
         self.bot = bot
@@ -24,30 +26,31 @@ class MainCog:
         if await ctx.bot.is_owner(ctx.message.author):
             check = True
             while check:
-                x = list(str(f"{ctx.message.content}"))
-                x[0:14] = ''
-                for i in range(len(x)):
-                    if x[i] == ',':
-                        if x[i + 1] == ' ':
-                            status = x[0:i]
-                            desc = x[i + 2:]
-                status = ''.join(str(y) for y in status)
-                desc = ''.join(str(y) for y in desc)
-                if status == 'online':
-                    statusChange = discord.Status.online
-                elif status == 'offline':
-                    statusChange = discord.Status.offline
-                elif status == 'idle':
-                    statusChange = discord.Status.idle
-                elif status == 'dnd':
-                    statusChange = discord.Status.dnd
-                elif status == 'invisible':
-                    statusChange = discord.Status.invisible
-                else:
-                    ctx.send(f"{ctx.message.author.mention}! {status} isn't an acceptable option. For help, type $updateStatus help")
+                x = stripCommand.main(list(str(f"{ctx.message.content}")))
+                if x[0] == 'online':
+                    await ctx.bot.change_presence(status=discord.Status.online, activity=discord.Game(x[1]))
+                    check = False
+                elif x[0] == 'offline':
+                    await ctx.bot.change_presence(status=discord.Status.offline, activity=discord.Game(x[1]))
+                    check = False
+                elif x[0] == 'idle':
+                    await ctx.bot.change_presence(status=discord.Status.idle, activity=discord.Game(x[1]))
+                    check = False
+                elif x[0] == 'dnd':
+                    await ctx.bot.change_presence(status=discord.Status.dnd, activity=discord.Game(x[1]))
+                    check = False
+                elif x[0] == 'invisible':
+                    await ctx.bot.change_presence(status=discord.Status.invisible, activity=discord.Game(x[1]))
+                    check = False
+                elif x[0] == 'help':
+                    ctx.send("Format of command: $updateStatus <status>, <desc>")
                     ctx.send("Options for status are `online`, `offline`, `idle`, `dnd (do not disturb)`, and `invisible`")
+                    ctx.send("Anything is allowed in the desc")
+                else:
+                    ctx.send(f"{ctx.message.author.mention}! {x[0]} isn't an acceptable option. For help, type $updateStatus help")
                     check = True
-                await ctx.bot.change_presence(status=statusChange, activity=discord.Game(desc))
+                print(f"Status Successfuly changed to {x[0]}, desc changed to {x[1]}")
+
         else:
             await ctx.send(f"You don't have permission, {ctx.message.author.mention}")
 
