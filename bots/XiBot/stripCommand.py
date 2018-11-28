@@ -1,13 +1,17 @@
 def main(x):
+    print(x)
     x[0:14] = ''
+    if x[0:4] == 'help':
+        print(f"0:4 = {x[0:4]}")
+        help = ''.join(str(y) for y in x)
+        print(f"help: {help}")
+        return help
     for i in range(len(x)):
-        if x[0:4] == 'help':
-            print(x[0:4])
-            return [x[0:4]]
-        elif x[i] == ',':
+        if x[i] == ',':
             if x[i + 1] == ' ':
                 status = x[0:i]
                 desc = x[i + 2:]
-                status = ''.join(str(y) for y in status)
-                desc = ''.join(str(y) for y in desc)
+                status = ''.join(str(r) for r in status)
+                desc = ''.join(str(r) for r in desc)
                 return [status, desc]
+                break
