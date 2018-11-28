@@ -27,7 +27,11 @@ class MainCog:
             check = True
             while check:
                 x = stripCommand.main(list(str(f"{ctx.message.content}")))
-                if x[0] == 'online':
+                if x[0] == 'help':
+                    ctx.send("Format of command: $updateStatus <status>, <desc>")
+                    ctx.send("Options for status are `online`, `offline`, `idle`, `dnd (do not disturb)`, and `invisible`")
+                    ctx.send("Anything is allowed in the desc")
+                elif x[0] == 'online':
                     await ctx.bot.change_presence(status=discord.Status.online, activity=discord.Game(x[1]))
                     check = False
                 elif x[0] == 'offline':
@@ -42,14 +46,10 @@ class MainCog:
                 elif x[0] == 'invisible':
                     await ctx.bot.change_presence(status=discord.Status.invisible, activity=discord.Game(x[1]))
                     check = False
-                elif x[0] == 'help':
-                    ctx.send("Format of command: $updateStatus <status>, <desc>")
-                    ctx.send("Options for status are `online`, `offline`, `idle`, `dnd (do not disturb)`, and `invisible`")
-                    ctx.send("Anything is allowed in the desc")
-                else:
+                elif x[0] == NoneType():
                     ctx.send(f"{ctx.message.author.mention}! {x[0]} isn't an acceptable option. For help, type $updateStatus help")
                     check = True
-                print(f"Status Successfuly changed to {x[0]}, desc changed to {x[1]}")
+                print(f"User {ctx.message.author} Status Successfuly changed to {x[0]}, desc changed to {x[1]}")
 
         else:
             await ctx.send(f"You don't have permission, {ctx.message.author.mention}")
