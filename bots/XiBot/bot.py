@@ -25,11 +25,10 @@ class MainCog:
     async def updateStatus(self, ctx):
         if await ctx.bot.is_owner(ctx.message.author):
             update = stripCommand.main(list(f"{ctx.message.content}"))
-            print(f"Final {update}")
-            if update == 'help':
-                ctx.send("Format of command: $updateStatus <status>, <desc>")
-                ctx.send("Options for status are `online`, `offline`, `idle`, `dnd (do not disturb)`, and `invisible`")
-                ctx.send("Anything is allowed in the desc")
+            if update[0] == 'Help':
+                await ctx.send("Format of command: $updateStatus <status>, <desc>")
+                await ctx.send("Options for status are `online`, `offline`, `idle`, `dnd (do not disturb)`, and `invisible`")
+                await ctx.send("Anything is allowed in the desc")
             elif update[0] == 'online':
                 await ctx.bot.change_presence(status=discord.Status.online, activity=discord.Game(update[1]))
             elif update[0] == 'offline':
@@ -40,10 +39,12 @@ class MainCog:
                 await ctx.bot.change_presence(status=discord.Status.dnd, activity=discord.Game(update[1]))
             elif update[0] == 'invisible':
                 await ctx.bot.change_presence(status=discord.Status.invisible, activity=discord.Game(update[1]))
+            #else:
+            #    await ctx.send(f"{ctx.message.author.mention}! {update[0]} isn't an acceptable option. For help, type $updateStatus help")
+            if update[0] != 'Help':
+                print(f"User {ctx.message.author}: Status successfully changed to {update[0]}, desc changed to {update[1]}")
             else:
-                ctx.send(f"{ctx.message.author.mention}! {update[0]} isn't an acceptable option. For help, type $updateStatus help")
-            print(f"User {ctx.message.author} Status Successfuly changed to {update[0]}, desc changed to {update[1]}")
-
+                print(f"User {ctx.message.author}: successfully asked for help")
         else:
             await ctx.send(f"You don't have permission, {ctx.message.author.mention}")
 
