@@ -22,6 +22,11 @@ class MainCog:
             await ctx.send(f"{ctx.message.author.mention} I'm not your property")
 
     @comms.command()
+    async def boop(self, ctx):
+        ctx.send(f"ctx.message.author")
+        #await ctx.send('boop')
+
+    @comms.command()
     async def updateStatus(self, ctx):
         if await ctx.bot.is_owner(ctx.message.author):
             update = stripCommand.main(list(f"{ctx.message.content}"))
@@ -39,8 +44,8 @@ class MainCog:
                 await ctx.bot.change_presence(status=discord.Status.dnd, activity=discord.Game(update[1]))
             elif update[0] == 'invisible':
                 await ctx.bot.change_presence(status=discord.Status.invisible, activity=discord.Game(update[1]))
-            #else:
-            #    await ctx.send(f"{ctx.message.author.mention}! {update[0]} isn't an acceptable option. For help, type $updateStatus help")
+            elif discord.ext.commands.errors.CommandInvokeError():
+                await ctx.send(f"{ctx.message.author.mention}! {ctx.message.content} isn't an acceptable command. For help, type $updateStatus help")
             if update[0] != 'Help':
                 print(f"User {ctx.message.author}: Status successfully changed to {update[0]}, desc changed to {update[1]}")
             else:
