@@ -1,31 +1,4 @@
 /*
-Your program should store the correct answers shown above in an array.
-It should ask the user to enter the student’s answers for each of the 20 questions,
-and the answers should be stored in another array.
-After the student’s answers have been entered,
-the program should display a message indicating whether the student passed or failed the exam.
-(A student must correctly answer 15 of the 20 questions to pass the exam.)
-It should then display the total number of correctly answered questions,
-the total number of incorrectly answered questions,
-and a list showing the question numbers of the incorrectly answered questions.
-Your program must have at least the following functions:
-
-// Function prototype:
-
-void input(char [], int);
-void checkAnswers(char[], char[], int &, int &, int);
-*. The input function accepts an array of characters and an integer for the size of the array.
-   The function asks the user to input answers to the exam and stores them in the array.
-   You must have an Input Validation loop:
-   Only accept the letters A, B, C, D or a, b, c, d, as answers.
-
-*. The checkAnswers function compares the values in the answers array
-   to the values in the replies array.
-   The number of correct and incorrect answers are stored in the correct
-   and incorrect reference parameters.
-*/
-
-/*
 Charles Buell
 29 November 2018
 
@@ -35,12 +8,13 @@ Program purpose:
 
 using namespace std;
 
-//void input(char [], int);
-//void checkAnswers(char [], char [], int &, int &, int);
+void input(char [], int);
+void checkAnswers(char [], char [], int &, int &, int);
 
 int main()
 {
     int array_size = 20;
+    int correct, incorrect;
     char rightAnswers[array_size] = {'A', 'D', 'B', 'B', 'C',
                                      'B', 'A', 'B', 'C', 'D',
                                      'A', 'C', 'D', 'B', 'D',
@@ -51,25 +25,58 @@ int main()
     cout << "Press Enter after typing each answer." << endl;
     cout << "Please enter only an A, B, C, D or ";
     cout << "a, b, c, d for each question." << endl;
-    int x;
-    for (int i = 0; i == array_size; i++) {
-        cin >> x;
-        userAnswers[i] = x;
+    input(userAnswers, array_size);
+    checkAnswers(userAnswers, rightAnswers, correct,
+                 incorrect, array_size);
+    if (correct <= 14) {
+        cout << "The student failed the exam" << endl;
     }
-    for (int i = 0; i == array_size; i++) {
-      cout << userAnswers[i] << " ";
+    else if (correct >= 15) {
+        cout << "The student passed the exam" << endl;
     }
-    return 0;
-}
-/*
-void input(char userAnswers[], int array_size)
-{
+    cout << "Correct answers: " << correct << endl;
+    cout << "Incorrect answers: " << incorrect << endl;
+
     return 0;
 }
 
-void checkAnswers(char userAnswers[], char correctAnswers[], int &correct,
+void input(char userAnswers[], int z)
+{
+    int i = 0;
+    while (i < z) {
+        cout << "Question " << i + 1 << ": ";
+        cin >> userAnswers[i];
+        if (userAnswers[i] != 'A' &&
+            userAnswers[i] != 'B' &&
+            userAnswers[i] != 'C' &&
+            userAnswers[i] != 'D' &&
+            userAnswers[i] != 'a' &&
+            userAnswers[i] != 'b' &&
+            userAnswers[i] != 'c' &&
+            userAnswers[i] != 'd') {
+                cout << "Use only an A, B, C, D or a, b, c, d!" << endl;
+                cout << "Please try again." << endl;
+            }
+        else
+            i++;
+    }
+}
+
+void checkAnswers(char userAnswers[], char rightAnswers[], int &correct,
                   int &incorrect, int array_size)
 {
-    return 0;
+    correct = 0;
+    incorrect = 0;
+    int i = 0;
+    cout << "Questions that were answered incorrectly: " << endl;
+    while (i < array_size) {
+        if (userAnswers[i] == rightAnswers[i]) {
+            ++correct;
+            ++i;
+        }
+        else
+            ++incorrect;
+            cout << i << endl;
+            ++i;
+    }
 }
-*/
