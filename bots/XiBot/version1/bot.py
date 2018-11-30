@@ -10,7 +10,8 @@ class MainCog:
         if ctx.invoked_subcommand is None:
             pass
     @updateStatus.command(pass_context=True)
-    async def online(self, ctx)
+    async def online(self, ctx, ):
+
 
     @updateStatus.command()
     async def help(self, ctx):
