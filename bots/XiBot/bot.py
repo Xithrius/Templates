@@ -22,11 +22,17 @@ class MainCog:
             await ctx.send(f"{ctx.message.author.mention} I'm not your property")
 
     @comms.command()
+<<<<<<< HEAD
     async def poke(self, ctx, member: discord.Member):
         await ctx.send_message(member, 'boop')
     #@comms.command(pass_context=True)
     #async def poke(self, ctx, message):
     #    await ctx.bot.send_message(ctx.message.author, 'boop')
+=======
+    async def boop(self, ctx):
+        ctx.send(f"{ctx.message.author}")
+        #await ctx.send('boop')
+>>>>>>> 5f09e33c4c15bfc31c03e9f4a4f42146091db1b1
 
     @comms.command()
     async def updateStatus(self, ctx):

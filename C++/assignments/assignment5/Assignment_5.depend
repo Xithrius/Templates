@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1541575474 source:c:\users\xithr\documents\github\coding\c++\assignment_5\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+
