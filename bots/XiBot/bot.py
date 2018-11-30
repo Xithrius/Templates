@@ -23,7 +23,7 @@ class MainCog:
 
     @comms.command()
     async def boop(self, ctx):
-        ctx.send(f"ctx.message.author")
+        ctx.send(f"{ctx.message.author}")
         #await ctx.send('boop')
 
     @comms.command()
