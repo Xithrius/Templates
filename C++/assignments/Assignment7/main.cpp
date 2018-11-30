@@ -3,6 +3,11 @@ Charles Buell
 29 November 2018
 
 Program purpose:
+Get answers from student, make them answer again
+if they didn't answer in one of the options,
+and after the test is done they get which Questions
+they got wrong, and how many incorrect and correct
+they got
 */
 #include <iostream>
 
@@ -80,3 +85,57 @@ void checkAnswers(char userAnswers[], char rightAnswers[], int &correct,
             ++i;
     }
 }
+/*
+My run is incorrect and I don't know what to fix in my program.
+Please enter the student's answers for each of the questions.
+Press Enter after typing each answer.
+Please enter only an A, B, C, D or a, b, c, d for each question.
+Question 1: A
+Question 2: C
+Question 3: B
+Question 4: B
+Question 5: a
+Question 6: d
+Question 7: d
+Question 8: d
+Question 9: a
+Question 10: b
+Question 11: v
+Use only an A, B, C, D or a, b, c, d!
+Please try again.
+Question 11: a
+Question 12: F
+Use only an A, B, C, D or a, b, c, d!
+Please try again.
+Question 12: d
+Question 13: a
+Question 14: A
+Question 15: C
+Question 16: B
+Question 17: A
+Question 18: D
+Question 19: B
+Question 20: C
+Questions that were answered incorrectly:
+1
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+The student failed the exam
+Correct answers: 2
+Incorrect answers: 16
+*/
