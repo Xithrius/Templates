@@ -9,15 +9,23 @@ class MainCog:
     async def updateStatus(self, ctx):
         if ctx.invoked_subcommand is None:
             pass
-    @updateStatus.command(pass_context=True)
-    async def online(self, ctx, ):
 
+    @updateStatus.command(pass_context=True)
+    async def online(self, ctx, desc):
+        await ctx.bot.change_presence(status=discord.Status.online, activity=discord.Game(desc))
+
+    @updateStatus.command(pass_context=True)
+    async def offline(self, ctx, desc):
+        await ctx.bot.change_presence(status=discord.Status.offline, activity=discord.Game(desc))
 
     @updateStatus.command()
     async def help(self, ctx):
-        await ctx.send("Format of command: $updateStatus <status>, <desc>")
-        await ctx.send("Options for status are `online`, `offline`, `idle`, `dnd (do not disturb)`, and `invisible`")
-        await ctx.send("Anything is allowed in the desc")
+        if await ctx.bot.is_owner(ctx.message.author):
+            await ctx.send("Format of command: $updateStatus <status>, <desc>")
+            await ctx.send("Options for status are `online`, `offline`, `idle`, `dnd (do not disturb)`, and `invisible`")
+            await ctx.send("Anything is allowed in the desc")
+        else:
+            await ctx.send(f"{ctx.message.author.mention} you're not my owner `REEEEEEEEEEEEEEE`")
 
     @comms.command(pass_context=True)
     async def joined_at(self, ctx, member: discord.Member = None):
