@@ -20,6 +20,22 @@ class MainCog:
         else:
             await ctx.send(f"{ctx.message.author.mention} you can't do this")
 
+    @comms.command()
+    async def sort(self, ctx):
+        l = list(f"{ctx.message.content}")
+        print(l)
+        l[0:6] = ''
+        print(l)
+        for i in range(len(l)):
+            if l[i] == ' ':
+                l[i] == ''
+        for i in range(len(l)):
+            if l[i].isnumeric():
+                l[i] = int(l[i])
+            else:
+                await ctx.send(f"Component number {i}, {l[i]} cannot be sorted")
+
+
     @comms.command(pass_context=True)
     async def joined_at(self, ctx, member: discord.Member = None):
         if member is None:
