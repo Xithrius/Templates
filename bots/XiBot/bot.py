@@ -23,19 +23,35 @@ class MainCog:
     @comms.command()
     async def sort(self, ctx):
         l = list(f"{ctx.message.content}")
-        print(l)
         l[0:6] = ''
-        print(l)
-        for i in range(len(l)):
-            if l[i] == ' ':
-                l[i] == ''
-        for i in range(len(l)):
-            if l[i].isnumeric():
-                l[i] = int(l[i])
-            else:
-                await ctx.send(f"Component number {i}, {l[i]} cannot be sorted")
+        wrongList = []
+        x = []
+        i = 0
+        mark = 0
+        checkSpace = True
+        while checkSpace:
+            try:
+                if l[i].isdigit():
+                    i += 1
+                elif l[i] == ' ':
+                    try:
+                        x.append(l[:i - 1])
+                    except:
+                        del l[:i]
+                    del l[:i]
+                    i = 0
+            except:
+                checkSpace = False
 
-
+        '''
+        if len(wrongList) > 0:
+            await ctx.send(f"{ctx.message.author.mention} components `{sorted(wrongList)}` cannot be in the list")
+            await ctx.send("Here is your sorted list of components that aren't invalid:")
+            await ctx.send(f"`{''.join(str(y) for y in x)}`")
+        elif len(wrongList) == 0:
+            await ctx.send(f"{ctx.message.author.mention} Here is your sorted list:")
+            await ctx.send(f"`{sorted(x)}`")
+        '''
     @comms.command(pass_context=True)
     async def joined_at(self, ctx, member: discord.Member = None):
         if member is None:
