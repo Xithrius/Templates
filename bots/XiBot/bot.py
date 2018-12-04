@@ -24,24 +24,7 @@ class MainCog:
     async def sort(self, ctx):
         l = list(f"{ctx.message.content}")
         l[0:6] = ''
-        wrongList = []
-        x = []
-        i = 0
-        mark = 0
-        checkSpace = True
-        while checkSpace:
-            try:
-                if l[i].isdigit():
-                    i += 1
-                elif l[i] == ' ':
-                    try:
-                        x.append(l[:i - 1])
-                    except:
-                        del l[:i]
-                    del l[:i]
-                    i = 0
-            except:
-                checkSpace = False
+        print(l)
 
         '''
         if len(wrongList) > 0:
