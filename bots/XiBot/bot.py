@@ -22,19 +22,19 @@ class MainCog:
 
     @comms.command()
     async def sort(self, ctx):
-        l = list(f"{ctx.message.content}")
-        l[0:6] = ''
-        print(l)
-
-        '''
+        l = f"{ctx.message.content}".split()
+        l = l[1:]
+        wrongList = []
+        l = sorted(l)
+        wrongList = sorted(wrongList)
         if len(wrongList) > 0:
-            await ctx.send(f"{ctx.message.author.mention} components `{sorted(wrongList)}` cannot be in the list")
+            await ctx.send(f"{ctx.message.author.mention} components `{wrongList}` cannot be in the list")
             await ctx.send("Here is your sorted list of components that aren't invalid:")
-            await ctx.send(f"`{''.join(str(y) for y in x)}`")
+            await ctx.send(f"`{''.join(str(y) for y in l)}`")
         elif len(wrongList) == 0:
             await ctx.send(f"{ctx.message.author.mention} Here is your sorted list:")
-            await ctx.send(f"`{sorted(x)}`")
-        '''
+            await ctx.send(f"`{l}`")
+
     @comms.command(pass_context=True)
     async def joined_at(self, ctx, member: discord.Member = None):
         if member is None:

@@ -1,0 +1,4 @@
+/home/xithrius/snap/gitkraken/1/CODING/C++/challenges/challenge3.cpp: In function ‘int main()’:
+/home/xithrius/snap/gitkraken/1/CODING/C++/challenges/challenge3.cpp:13:23: error: invalid types ‘int[int]’ for array subscript
+         cin >> score[i];
+                       ^
