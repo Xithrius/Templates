@@ -22,9 +22,19 @@ class MainCog:
 
     @comms.command()
     async def sort(self, ctx):
-        l = f"{ctx.message.content}".split()
-        l = l[1:]
+        l = list(f"{ctx.message.content}")
+        l = l[6:]
+        wrongList = []
         print(l)
+        for i in range(len(l) - 1):
+            if l[i].isdigit() is False:
+                wrongList.extend(l[i])
+                l.pop(i)
+        l = list(map(int, (''.join(str(y) for y in l)).split()))
+        sorted(l)
+        print(l)
+        print(wrongList)
+        '''
         wrongList = []
         for i in range(len(l)):
             try:
@@ -43,7 +53,7 @@ class MainCog:
         elif len(wrongList) == 0:
             await ctx.send(f"{ctx.message.author.mention} Here is your sorted list:")
             await ctx.send(f"`{l}`")
-
+        '''
     @comms.command(pass_context=True)
     async def joined_at(self, ctx, member: discord.Member = None):
         if member is None:
