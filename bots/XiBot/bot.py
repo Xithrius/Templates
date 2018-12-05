@@ -24,9 +24,18 @@ class MainCog:
     async def sort(self, ctx):
         l = f"{ctx.message.content}".split()
         l = l[1:]
+        print(l)
         wrongList = []
+        for i in range(len(l)):
+            try:
+                l[i] = int(l[i])
+            except:
+                wrongList.extend(l[i])
+                l.pop(i)
         l = sorted(l)
         wrongList = sorted(wrongList)
+        l = ', '.join(str(y) for y in l)
+        wrongList = ', '.join(str(z) for z in wrongList)
         if len(wrongList) > 0:
             await ctx.send(f"{ctx.message.author.mention} components `{wrongList}` cannot be in the list")
             await ctx.send("Here is your sorted list of components that aren't invalid:")
