@@ -9,7 +9,6 @@ except ImportError:
     print("No module named 'google' found")
 
 
-
 class MainCog:
     def __init__(self, bot):
         self.bot = bot
