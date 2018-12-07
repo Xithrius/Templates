@@ -18,12 +18,11 @@ int main()
 
 
     ifstream inFile;
-    inFile.open(nums.txt);
+    inFile.open("nums-1.txt");
 
     if (!inFile)
     {
         cout << "Unable to open file" << endl;
-        exit(1);
     }
 
     for (int i = 0; i < 12; i++)
