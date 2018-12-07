@@ -27,10 +27,13 @@ int main()
             check = false;
     }
     int arr[length];
-    for (int i = 0; i <= length - 1; i++) {
+    for (int i = 0; i < length; i++) {
         inputFile >> arr[i];
-        printf("%1d \n", arr[i]);
     }
+    for (int i = 0; i < length; i++) {
+      cout << arr[i] << " ";
+    }
+
 
     inputFile.close();
     return 0;
