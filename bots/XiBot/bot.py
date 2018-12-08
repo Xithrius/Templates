@@ -15,15 +15,14 @@ class MainCog:
 
     @comms.command(pass_context=True)
     async def google(self, ctx, searching, number):
+        number = int(number)
         results = []
         embed=discord.Embed(title="Google search", description=f"The top {number} search results for {searching}")
-        for j in search(searching, tld="com", num=number, stop=1, pause=2):
-            results.append(j)
+        for j in search(searching, tld="com", num=number, stop=1, pause=3):
             print(j)
-        '''
-        for i in range(number):
-            embed.add_field(name=f"{}")
-        '''
+            results.append(j)
+        for i in range(len(results)):
+            
 
     @comms.command(pass_context=True)
     async def updateStatus(self, ctx, stat, desc=None):
@@ -44,7 +43,7 @@ class MainCog:
 
     @comms.command()
     async def help(self, ctx):
-        embed=discord.Embed(title="Help 1/", description="This is the place where you get help", color=0x00ff01, timestamp=datetime.datetime.now())
+        embed=discord.Embed(title="Help 1/", description="This is the place where you get help", color=669999, timestamp=datetime.datetime.now())
         embed.add_field(name="command prefix", value="$", inline=False)
         embed.add_field(name="$updateStatus <status> <desc>", value="<status> can be online, offline, idle, dnd (do not disturb), or invisible. <desc> changes what the bot is playing.", inline=True)
         embed.add_field(name="Field2", value="hi2", inline=False)
