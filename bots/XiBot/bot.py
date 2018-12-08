@@ -18,11 +18,12 @@ class MainCog:
         number = int(number)
         results = []
         embed=discord.Embed(title="Google search", description=f"The top {number} search results for {searching}")
-        for j in search(searching, tld="com", num=number, stop=1, pause=3):
+        for j in search(searching, tld='com', lang='en', num=number, start=0, stop=1, pause=2.5):
             print(j)
             results.append(j)
         for i in range(len(results)):
-            
+            embed.add_field(name=f"Result #{i + 1}", value=f"{reults[i]}", inline=False)
+        await ctx.send(embed=embed)
 
     @comms.command(pass_context=True)
     async def updateStatus(self, ctx, stat, desc=None):
