@@ -3,27 +3,10 @@ import discord.ext.commands as comms
 import datetime
 import time
 
-try:
-    from googlesearch import search
-except ImportError:
-    print("No module named 'google' found")
-
 
 class MainCog:
     def __init__(self, bot):
         self.bot = bot
-
-    @comms.command(pass_context=True)
-    async def google(self, ctx, searching, number):
-        number = int(number)
-        results = []
-        embed=discord.Embed(title="Google search", description=f"The top {number} search results for {searching}")
-        for j in search(searching, tld='com', lang='en', num=number, start=0, stop=1, pause=2.5):
-            print(j)
-            results.append(j)
-        for i in range(len(results)):
-            embed.add_field(name=f"Result #{i + 1}", value=f"{reults[i]}", inline=False)
-        await ctx.send(embed=embed)
 
     @comms.command(pass_context=True)
     async def updateStatus(self, ctx, stat, desc=None):
@@ -63,6 +46,7 @@ class MainCog:
             await self.bot.logout()
         else:
             await ctx.send("You can't do that")
+
 
 class BotClient(comms.Bot):
     async def on_ready(self):
