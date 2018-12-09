@@ -3,27 +3,9 @@ import discord.ext.commands as comms
 import datetime
 import time
 
-try:
-    from googlesearch import search
-except ImportError:
-    print("No module named 'google' found")
-
-
 class MainCog:
     def __init__(self, bot):
         self.bot = bot
-
-    @comms.command(pass_context=True)
-    async def google(self, ctx, searching, number):
-        number = int(number)
-        results = []
-        embed=discord.Embed(title="Google search", description=f"The top {number} search results for {searching}")
-        for j in search(searching, tld='com', lang='en', num=number, start=0, stop=1, pause=2.5):
-            print(j)
-            results.append(j)
-        for i in range(len(results)):
-            embed.add_field(name=f"Result #{i + 1}", value=f"{reults[i]}", inline=False)
-        await ctx.send(embed=embed)
 
     @comms.command(pass_context=True)
     async def updateStatus(self, ctx, stat, desc=None):
@@ -42,9 +24,13 @@ class MainCog:
         else:
             await ctx.send(f"{ctx.message.author.mention} you can't do this")
 
+    @comms.command(pass_context=True)
+    async def poke(self, ctx, member, message):
+        await ctx.bot.send_message(message.author, 'poke')
+
     @comms.command()
     async def help(self, ctx):
-        embed=discord.Embed(title="Help 1/", description="This is the place where you get help", color=669999, timestamp=datetime.datetime.now())
+        embed=discord.Embed(title="Help 1/", description="This is the place where you get help", color=300000, timestamp=datetime.datetime.now())
         embed.add_field(name="command prefix", value="$", inline=False)
         embed.add_field(name="$updateStatus <status> <desc>", value="<status> can be online, offline, idle, dnd (do not disturb), or invisible. <desc> changes what the bot is playing.", inline=True)
         embed.add_field(name="Field2", value="hi2", inline=False)
