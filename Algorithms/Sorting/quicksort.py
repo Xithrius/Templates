@@ -3,26 +3,26 @@ def main(x):
     while check:
         x = list(x)
         for i in range(len(x)):
-            try:
+            if x[i].isdigit():
                 x[i] = int(x[i])
                 if i == len(x) - 1:
-                    algorithm(x)
                     check = False
                     break
-            except:
+            else:
                 print(f"{x[i]} and other possibly similar inputs are not acceptable")
-                x = input('Numbers: ')
                 check = True
+    check = True
+    pivot = x[len(x) - 1]
+    while check:
+        x = algorithm(x)
+
 
 
 def algorithm(x):
-    check = True
-    while check:
-        check = False
-        for i in range(len(x) - 1):
-            if x[i] > x[i + 1]:
-                x[i], x[i + 1] = x[i + 1], x[i]
-                check = True
-                print(x)
+    pivot = x[len(x) - 1]
+    for i in range(len(x) - 1):
+        if pivot < x[len(x) - 2]:
+            x[len(x) - 2], pivot = pivot, x[len(x) - 2]
+
 x = input('Numbers: ')
 main(x)
