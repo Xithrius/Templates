@@ -3,6 +3,10 @@ import discord.ext.commands as comms
 import datetime
 import time
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 347ef768257d7392999b2953509b6f437c10b57f
 class MainCog:
     def __init__(self, bot):
         self.bot = bot
@@ -49,6 +53,7 @@ class MainCog:
             await self.bot.logout()
         else:
             await ctx.send("You can't do that")
+
 
 class BotClient(comms.Bot):
     async def on_ready(self):
