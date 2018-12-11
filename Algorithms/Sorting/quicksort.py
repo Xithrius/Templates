@@ -13,16 +13,12 @@ def main(x):
                 check = True
     check = True
     pivot = x[len(x) - 1]
-    while check:
-        x = algorithm(x)
-
+    algorithm(x)
 
 
 def algorithm(x):
-    pivot = x[len(x) - 1]
-    for i in range(len(x) - 1):
-        if pivot < x[len(x) - 2]:
-            x[len(x) - 2], pivot = pivot, x[len(x) - 2]
+    
+    return ', '.join(str(y) for y in x)
 
 x = input('Numbers: ')
 main(x)

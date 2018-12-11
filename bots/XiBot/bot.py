@@ -1,5 +1,6 @@
 import discord
 import discord.ext.commands as comms
+import asyncio
 import datetime
 import time
 
@@ -24,10 +25,6 @@ class MainCog:
                 await ctx.send(f"{stat} is an invalid parameter for $updateStatus")
         else:
             await ctx.send(f"{ctx.message.author.mention} you can't do this")
-
-    @comms.command(pass_context=True)
-    async def poke(self, ctx, member, message):
-        await ctx.bot.send_message(message.author, 'poke')
 
     @comms.command()
     async def help(self, ctx):
