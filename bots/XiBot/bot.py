@@ -1,8 +1,7 @@
 import discord
 import discord.ext.commands as comms
-import asyncio
 import datetime
-import time
+import json
 
 
 class MainCog:
@@ -10,8 +9,12 @@ class MainCog:
         self.bot = bot
 
     @comms.command(pass_context=True)
-    async def etg(self, ctx, itemType, item):
-        
+    async def etg(self, ctx, searchType, name):
+        if searchType == 'gungeoneers' or 'Gungeoneers':
+            pass
+        elif searchType == 'items' or 'Items':
+
+
 
     @comms.command(pass_context=True)
     async def updateStatus(self, ctx, stat, desc=None):

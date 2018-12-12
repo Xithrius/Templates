@@ -1,0 +1,105 @@
+{
+  "Template": {
+    "Story": [
+      "Story"
+    ],
+    "Starting Weapons": [
+      "Weapons"
+    ],
+    "Starting Items": [
+      "Items"
+    ]},
+
+
+  "The Convict": {
+    "Story": [
+      "The Convict, formerly known as Laser Lily, was the head of a criminal organization. After bribing Black Stache into overlooking her crimes, he betrayed her and conducted a sting operation on her headquarters. She was captured by Hegemony forces and chose to face the Gungeon over life imprisonment."
+    ],
+    "Starting Weapons": [
+      "Budget Revolver",
+      "Sawed-Off"
+    ],
+    "Starting Items": [
+      "Molotov",
+      "Enraging Photo"
+    ]},
+
+
+  "The Hunter": {
+    "Story": [
+      "1,147 years prior to the Hunter's adventure into the Gungeon, she travelled to Blacksword Manor to defeat Dr. Wolfenclaw; however, she was captured and stored in a Cryo Pod until the events of Enter The Gungeon. It is unknown how she escaped the Cryo Pod."
+    ],
+    "Starting Weapons": [
+      "Rusty Sidearm",
+      "Crossbow"
+    ],
+    "Starting Items": [
+      "Dog"
+    ]},
+
+
+  "The Marine": {
+    "Story": [
+      "The Marine was a guard stationed at Primerdyne R&D when an experiment went awry, unleashing an Interdimensional Horror into the facility. His gun having jammed, the Marine chose to flee in an escape pod, abandoning the scientists and his fellow guardsmen onboard the station to their doom."
+    ],
+    "Starting Weapons": [
+      "Marine Sidearm"
+    ],
+    "Starting Items": [
+      "Supply Drop",
+      "Military Training",
+      "1 armor"
+    ]},
+
+
+  "The Pilot": {
+    "Story": [
+      "The Pilot was some sort of space smuggler who was found holding cargo owned by the Imperial Hegemony of Man. When confronted by the HM Absolution, he was ordered to power down all systems other than life support. Rather than surrendering, he jumped away, leaving his friend Z to be captured. Feeling bad about this, he enters the Gungeon, hoping to save Z."
+    ],
+    "Starting Weapons": [
+      "Rogue Special"
+    ],
+    "Starting Items": [
+      "Trusty Lockpicks",
+      "Disarming Personality",
+      "Hidden Compartment"
+    ]},
+
+
+  "The Cultist": {
+    "Story": [
+      "Before the Cultist enters the Gungeon, his reason for being there is probably to make his sibling take the blame for spilling grape juice on the couch, as stated in the Ammonomicon entry for the Dart Gun. However, his motives change over the course of what happens in the Gungeon as he is treated poorly by the NPCs. Eventually, he comes to the conclusion that what he wants is to defeat player one and become the protagonist."
+    ],
+    "Starting Weapons": [
+      "Dart Gun"
+    ],
+    "Starting Items": [
+      "Friendship Cookie",
+      "Number 2"
+    ]},
+
+
+  "The Bullet": {
+    "Story": [
+      "There is no story"
+    ],
+    "Starting Weapons": [
+      "Blasphemy"
+    ],
+    "Starting Items": [
+      "Live Ammo"
+    ]},
+
+
+  "The Robot": {
+    "Story": [
+      "The Robot was an honored member of the killbot army. When commanded by its master, EMP-R0R to kill the leader of the human resistance, it broke protocol, failing to eliminate humanity."
+    ],
+    "Starting Weapons": [
+      "Robot's Right Hand"
+    ],
+    "Starting Items": [
+      "Coolant Leak",
+      "Battery Bullets"
+    ]}
+}
