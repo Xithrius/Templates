@@ -10,6 +10,10 @@ class MainCog:
         self.bot = bot
 
     @comms.command(pass_context=True)
+    async def etg(self, ctx, itemType, item):
+        
+
+    @comms.command(pass_context=True)
     async def updateStatus(self, ctx, stat, desc=None):
         if await ctx.bot.is_owner(ctx.message.author):
             if stat == 'help':
