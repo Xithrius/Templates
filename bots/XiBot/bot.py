@@ -13,9 +13,14 @@ class MainCog:
     @comms.command(pass_context=True)
     async def etg(self, ctx, searchType, name):
         if searchType in ['gungeoneers', 'items', 'guns', 'bosses', 'CotG']:
-            with open(f"pathing() + /{searchType}.json", 'r') as f:
-                gungeoneer = json.load(f)
-            embed=discord.Embed(title=f"{gungeoneer}", description="This is the place where you get help", color=300000, timestamp=datetime.datetime.now())
+            with open(f"pathing.main() + /{searchType}.json", 'r') as f:
+                searched = json.load(f)
+            embed=discord.Embed(title=f"{searchType}", description=f"searched[searchType]['Story']", color=300000, timestamp=datetime.datetime.now())
+            for i in range(len(searched[searchType]['Starting Weapons'])):
+                embed.add_field(name=f"searched[searchType][i]", value="", inline=False)
+            for i in range(len(searched[searchType]['Starting Items'])):
+                embed.add_field(name=f"searched[searchType][i]", value="", inline=False)
+            ctx.send(embed=embed)
         else:
             ctx.send(f"{ctx.message.author.mention} {searchType} only Gungeoneers, Items, Guns, Bosses, and the Cult of the Gundead exist")
 
