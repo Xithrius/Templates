@@ -2,7 +2,9 @@ import discord
 import discord.ext.commands as comms
 import datetime
 import json
+import os
 
+import pathing
 
 class MainCog:
     def __init__(self, bot):
@@ -10,11 +12,12 @@ class MainCog:
 
     @comms.command(pass_context=True)
     async def etg(self, ctx, searchType, name):
-        if searchType == 'gungeoneers' or 'Gungeoneers':
-            pass
-        elif searchType == 'items' or 'Items':
-
-
+        if searchType in ['gungeoneers', 'items', 'guns', 'bosses', 'CotG']:
+            with open(f"pathing() + /{searchType}.json", 'r') as f:
+                gungeoneer = json.load(f)
+            embed=discord.Embed(title=f"{gungeoneer}", description="This is the place where you get help", color=300000, timestamp=datetime.datetime.now())
+        else:
+            ctx.send(f"{ctx.message.author.mention} {searchType} only Gungeoneers, Items, Guns, Bosses, and the Cult of the Gundead exist")
 
     @comms.command(pass_context=True)
     async def updateStatus(self, ctx, stat, desc=None):
