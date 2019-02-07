@@ -35,6 +35,6 @@ except FileNotFoundError:
         token = input('token: ')
         f.write(token)
 bot = BotClient(command_prefix = '$', owner_id = '''OWNER ID''')
-# "bot.remove_command('help')" To remove built in commands
+# "bot.remove_command('help')" To remove 'help' built in command
 bot.add_cog(MainCog(bot))
 bot.run(token)
