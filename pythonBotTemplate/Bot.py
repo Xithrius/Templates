@@ -2,16 +2,17 @@ import discord
 from discord.ext import commands as comms
 import os
 
+# Different paths for different operating systems
+def pathing(object):
+    if platform.system() == "Windows":
+        return f"{os.path.dirname(os.path.realpath(__file__))}\\{object}"
+    elif platform.system() == "Linux":
+        return f"{os.path.dirname(os.path.realpath(__file__))}/{object}"
 
-def pathing():
-    return os.path.dirname(os.path.realpath(__file__))
-    # Directory (folder) path
 
 class MainCog():
     def __init__(self, bot):
         self.bot = bot
-
-# commands here
 
     @comms.command()
     async def exit(self, ctx):
