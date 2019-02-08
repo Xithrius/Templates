@@ -20,6 +20,59 @@ def pathing(object):
 #/////////////////////////////////////////////////////////////////////////////#
 
 #-----------------------------------------------------------------------------#
+#
+#-----------------------------------------------------------------------------
+class MainCog():
+    def __init__(self, bot):
+        self.bot = bot
+
+    @comms.command()
+    async def help(self, ctx):
+        ctx.send(embed=embed)
+
+    @comms.command()
+    async def exit(self, ctx):
+        if await ctx.bot.is_owner(ctx.author):
+            print("Exiting...")
+            await self.bot.logout()
+        else:
+            await ctx.send(f"{ctx.author.mention} you cannot do this")
+#/////////////////////////////////////////////////////////////////////////////#
+
+#-----------------------------------------------------------------------------#
+# Checking files
+#-----------------------------------------------------------------------------
+def initErrorCheck():
+    try:
+        with open(pathing('login.json'), "r") as f:
+            login = json.load(f)
+            return [login["discord"]["owner_id"], login["discord"]["bot_token"]]
+    except FileNotFoundError:
+        errorMessage("The file login.json cannot be found.", sys.exc_info())
+        with open(pathing('login.json'), "r+") as f:
+            owner_id = input("Input discord user owner for owner_id: ")
+            bot_token = input("Input discord bot token for bot_token: ")
+            tokens = {
+            "discord": [owner_id, bot_token]
+            }
+            json.dump(logins, f)
+    except IndexError:
+        errorMessage("The file login.json has been modified and cannot be read.", sys.exc_info())
+#/////////////////////////////////////////////////////////////////////////////#
+
+#-----------------------------------------------------------------------------#
+# When there is an error, this will be called and shown to console.
+#-----------------------------------------------------------------------------
+def errorPrompt(string, type=None):
+    if type != None:
+        x = f"#{'/' * len(string)}#"
+        print(f"{x}\n{type}:\n{string}\n{x}")
+    else:
+        x = f"#{'/' * len(string)}#"
+        print(f"{x}\n{string}\n{x}")
+#/////////////////////////////////////////////////////////////////////////////#
+
+#-----------------------------------------------------------------------------#
 # Input checking for all the needs
 #-----------------------------------------------------------------------------
 def inputTest(string):
@@ -41,56 +94,8 @@ def inputTest(string):
 #/////////////////////////////////////////////////////////////////////////////#
 
 #-----------------------------------------------------------------------------#
-#
+# The event tells by console when the bot is ready to be used.
 #-----------------------------------------------------------------------------
-class MainCog():
-    def __init__(self, bot):
-        self.bot = bot
-
-    @comms.command()
-    async def help(self, ctx):
-        ctx.send(embed=embed)
-
-    @comms.command()
-    async def exit(self, ctx):
-        if await ctx.bot.is_owner(ctx.author):
-            print("Exiting...")
-            await self.bot.logout()
-        else:
-            await ctx.send(f"{ctx.author.mention} you cannot do this")
-#/////////////////////////////////////////////////////////////////////////////#
-
-#-----------------------------------------------------------------------------#
-#
-#-----------------------------------------------------------------------------
-def initErrorCheck():
-    try:
-        with open(pathing('login.json'), "r") as f:
-            login = json.load(f)
-            return [login["discord"]["owner_id"], login["discord"]["bot_token"]]
-    except FileNotFoundError:
-        errorMessage("The file login.json cannot be found.", sys.exc_info())
-        with open(pathing('login.json'), "r") as f:
-    except IndexError:
-        errorMessage("The file login.json has been modified and cannot be read.", sys.exc_info())
-#/////////////////////////////////////////////////////////////////////////////#
-
-#-----------------------------------------------------------------------------#
-#
-#-----------------------------------------------------------------------------
-def errorPrompt(string, type=None):
-    if type != None:
-        x = f"#{'/' * len(string)}#"
-        print(f"{x}\n{type}:\n{string}\n{x}")
-    else:
-        x = f"#{'/' * len(string)}#"
-        print(f"{x}\n{string}\n{x}")
-#/////////////////////////////////////////////////////////////////////////////#
-
-#-----------------------------------------------------------------------------#
-#
-#-----------------------------------------------------------------------------
-
 class BotClient(comms.Bot):
     async def on_ready(self):
         print(f"Logging in as {bot.user}")
@@ -99,7 +104,7 @@ class BotClient(comms.Bot):
 #/////////////////////////////////////////////////////////////////////////////#
 
 #-----------------------------------------------------------------------------#
-#
+# Calling of bot functions
 #-----------------------------------------------------------------------------
 logins = initErrorCheck()
 try:
